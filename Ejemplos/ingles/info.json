@@ -1,0 +1,160 @@
+{
+    "Preguntas":[
+        {
+            "pregunta"        :"¿Que te gusta?",
+            "preguntaIngles"  :"What do you like?",
+            "respuesta"       :"Me gusta programar es mi pasatiempo y jugar juegos de celular",
+            "respuestaIngles" :"I like programming is my hobby and playing cell phone games"
+        },
+        {
+            "pregunta"        :"¿Trabajos de los que nos puedes comentar?",
+            "preguntaIngles"  :"Jobs that you can tell us about?",
+            "respuesta"       :"Trabajé en pequeños proyectos, por ejemplo, una aplicación web para un transportista turístico y tambien desarrolle un cotizador para la empresa em.",
+            "respuestaIngles" :"I worked on small projects, for example, a web application for a tourist carrier and also developed a quote for the company em."
+        },
+        {
+            "pregunta"        :"¿Cuál es su nombre?",
+            "preguntaIngles"  :"What's your name?",
+            "respuesta"       :"Mi nombre es elber",
+            "respuestaIngles" :"My name is elber"
+        },
+        {
+            "pregunta"        :"¿Tienes título?",
+            "preguntaIngles"  :"Do you have a title?",
+            "respuesta"       :"Si, apenas me lo entregaron",
+            "respuestaIngles" :"Yes, they just gave it to me"
+        },
+        {
+            "pregunta"        :"¿Cuál es tu apellido?",
+            "preguntaIngles"  :"What’s your last name / surname?",
+            "respuesta"       :"García.",
+            "respuestaIngles" :"García."
+        },
+        {
+            "pregunta"        :"¿De dónde eres?",
+            "preguntaIngles"  :"Where are you from?",
+            "respuesta"       :"Yo soy de puebla mexico",
+            "respuestaIngles" :"I’m from Puebla, Mexico."
+        },
+        {
+            "pregunta"        :"¿Cómo se llama tu jefe?",
+            "preguntaIngles"  :"What’s your boss’ name?",
+            "respuesta"       :"His name is Rodrigo.",
+            "respuestaIngles" :"His name is Rodrigo."
+        },
+        {
+            "pregunta"        :"¿Tienes hermanos?",
+            "preguntaIngles"  :"Do you have any brothers or sisters?",
+            "respuesta"       :"Yes, I do. I have a brother and a sister",
+            "respuestaIngles" :"Yes, I do. I have a brother and a sister"
+        },
+        {
+            "pregunta"        :"¿Cuál es tu dirección?",
+            "preguntaIngles"  :"What’s your address?",
+            "respuesta"       :"I live at Calle Noviciado number 9.",
+            "respuestaIngles" :" I live at Calle Noviciado number 9."
+        },
+        {
+            "pregunta"        :"¿Dónde vives?",
+            "preguntaIngles"  :"Where do you live?",
+            "respuesta"       :"I live in an apartment downtown.",
+            "respuestaIngles" :"I live in an apartment downtown."
+        },
+        {
+            "pregunta"        :"¿Vives sólo?",
+            "preguntaIngles"  :"Do you live alone?",
+            "respuesta"       :"Si. Pero mi novia viene mucho.",
+            "respuestaIngles" :"Yes. But my girlfriend comes over a lot."
+        },
+        {
+            "pregunta"        :"¿Cómo te sientes?",
+            "preguntaIngles"  :"How do you feel?",
+            "respuesta"       :"Me siento bien Un poco somnoliento, pero bien.",
+            "respuestaIngles" :"I feel okay. A little sleepy, but fine."
+        },
+        {
+            "pregunta"        :"¿Qué pasa?",
+            "preguntaIngles"  :"What’s up?",
+            "respuesta"       :"Not much.",
+            "respuestaIngles" :"Not much."
+        },
+        {
+            "pregunta"        :"¿Te sientes mejor?",
+            "preguntaIngles"  :"Are you feeling better?",
+            "respuesta"       :"Si estoy bien. Mucho mejor que ayer.",
+            "respuestaIngles" :"Yeah, I’m fine. A lot better than yesterday."
+        },
+        {
+            "pregunta"        :"¿Te gustaría tomar un café?",
+            "preguntaIngles"  :"Would you like some coffee?",
+            "respuesta"       :"Sí, me encantaría alguno.",
+            "respuestaIngles" :"Yeah, I’d love some."
+        },
+        {
+            "pregunta"        :"¿Quieres salir algún día?",
+            "preguntaIngles"  :"Do you want to go out sometime?",
+            "respuesta"       :"Lo siento. Tengo novio.",
+            "respuestaIngles" :"Sorry. I have a boyfriend."
+        },
+        {
+            "pregunta"        :"¿Cuál es tu grupo de música favorito?",
+            "preguntaIngles"  :"What’s your favorite band?",
+            "respuesta"       :"Realmente me gusta Nirvana.",
+            "respuestaIngles" :"I really like Nirvana."
+        },
+        {
+            "pregunta"        :"¿Cuál es tu comida favorita?",
+            "preguntaIngles"  :"What’s your favorite food?",
+            "respuesta"       :"Me gustan muchas comidas diferentes, pero mi favorito es el sushi.",
+            "respuestaIngles" :"I like a lot of different foods, but my favorite is sushi."
+        },
+        {
+            "pregunta"        :"¿Qué tipo de música te gusta?",
+            "preguntaIngles"  :"What kind of music do you like?",
+            "respuesta"       :"Me gusta la música rock.",
+            "respuestaIngles" :"I like rock music."
+        },
+        {
+            "pregunta"        :"¿Qué te gusta hacer en tu tiempo libre?",
+            "preguntaIngles"  :"What do you like doing in your free time?",
+            "respuesta"       :"Me gusta correr, hacer yoga y salir con mis amigos.",
+            "respuestaIngles" :"I like running, doing yoga, and going out with my friends."
+        },
+        {
+            "pregunta"        :"¿Tienes mascotas?",
+            "preguntaIngles"  :"Do you have any pets?",
+            "respuesta"       :"Sí, tengo un gato. ¿Que pasa contigo?",
+            "respuestaIngles" :"Yeah, I have a cat. What about you?"
+        },
+        {
+            "pregunta"        :"¿Podrías repetirlo?",
+            "preguntaIngles"  :"Could you please repeat that?",
+            "respuesta"       :"Dije \"está bajando las escaleras y hacia la izquierda\"",
+            "respuestaIngles" :"I said “it’s down the stairs and to the left”."
+        },
+        {
+            "pregunta"        :"¿Podrías hablar más lento?",
+            "preguntaIngles"  :"Could you please speak slower?",
+            "respuesta"       :"Seguro. No eres de por aquí, ¿verdad?",
+            "respuestaIngles" :"Sure. You’re not from around here, are you?"
+        },
+        {
+            "pregunta"        :"¿Podrías deletrearlo?",
+            "preguntaIngles"  :" Could you please spell that?",
+            "respuesta"       :"Sure. W – E – L – S – C – H.",
+            "respuestaIngles" :"Sure. W – E – L – S – C – H."
+        },
+        {
+            "pregunta"        :"",
+            "preguntaIngles"  :"",
+            "respuesta"       :"",
+            "respuestaIngles" :""
+        },
+        {
+            "pregunta"        :"",
+            "preguntaIngles"  :"",
+            "respuesta"       :"",
+            "respuestaIngles" :""
+        }
+    ]
+}

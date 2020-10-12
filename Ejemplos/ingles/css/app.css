@@ -1,0 +1,41 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+main{
+    padding: 10px 10px;
+    text-align: center;
+}
+main h1{
+    padding: 10px 0px;
+}
+main h1 button{
+    padding: 1px 2px;
+    font-size: 10px;
+}
+.pregunta{
+    padding: 10px 0px;
+}
+.preguntaFull div{
+    padding: 10px 0px;
+}
+.pregunta button{
+    padding: 1px 2px;
+    font-size: 10px;
+}
+footer{
+    display: flex;
+    padding: 0% 5px;
+    padding-top: 10px;
+}
+.copy{
+    width: 50%;
+    font-size: 12px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.fecha{
+    width: 50%;
+    font-size: 12px;
+    text-align: right;
+    font-family: 'Courier New', Courier, monospace;
+}

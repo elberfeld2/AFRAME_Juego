@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frame</title>
+    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+</head>
+
+<body>
+
+<script>
+    AFRAME.registerComponent('cursor-listener',{
+        init:function(){
+            // this.el.addEventListener("click",function(e){
+            //     this.setAttribute('material','color','blue')
+            // })
+            let color = this.el.getAttribute("material").color;
+            this.el.addEventListener("mouseenter",function(e){
+                this.setAttribute('material','color','blue')
+            })
+            this.el.addEventListener("mouseleave",function(e){
+                this.setAttribute('material','color',color)
+            })
+        }
+    })
+</script>
+    <a-scene>
+        <a-box cursor-listener position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
+        <a-sphere cursor-listener position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
+        <a-cylinder cursor-listener position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
+        <a-plane cursor-listener position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
+        <a-sky color="#ECECEC"></a-sky>
+        <a-entity id="personaje">
+            <a-entity camera="userHeight: 1.6" look-controls>
+                <a-entity cursor geometry="primitive: ring; radiusInner:0.03; radiusOuter:0.05" position="0 0 -1"
+                    material="color: blue; opacity: 0.4"></a-entity>
+            </a-entity>
+            <!-- <a-box position="0 1 -1" scale="0.1 0.1 0.1" color="#CCAAEE"></a-box> -->
+        </a-entity>
+    </a-scene>
+
+    <script>
+        let personaje = document.getElementById("personaje")
+        
+
+        // setInterval(e=>{
+        //     personaje.object3D.position.z+=1;
+        // },1000)
+
+
+    </script>
+</body>
+
+</html>
