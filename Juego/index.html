@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frame</title>
+    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .caja {
+            width: 100vw;
+            height: 100vh;
+            position: absolute;
+            z-index: 1;
+            left: 0px;
+            top: 0px;
+            display: flex;
+            flex-direction: column;
+            justify-content:flex-start;
+            align-items: center;
+        }
+        .caja__img{
+            color: rebeccapurple;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 10vh;
+            padding: 10px;
+            width: 100px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            text-align: center;
+        }
+        .caja__puntuacion{
+            color: rebeccapurple;
+            font-weight: bold;
+            padding: 15px;
+            width: 200px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            text-align: center;
+        }
+        .caja__btn {
+            display: block;
+            padding: 10px;
+            width: 100px;
+            background-color: rebeccapurple;
+            color: aliceblue;
+            text-align: center;
+            margin-top: 10px;
+        }
+        .btn__top{
+            margin-top: 30px;
+        }
+        
+        .puntaje {
+            width: 100vw;
+            height: 10vh;
+            position: absolute;
+            z-index: 1;
+            left: 0px;
+            top: 0px;
+            display: flex;
+            flex-direction: row;
+            justify-content:space-between;
+        }
+        
+        .puntaje__img{
+            color: rebeccapurple;
+            font-weight: bold;
+            width: 100px;
+            padding: 10px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            text-align: center;
+        }
+        .puntaje__total{
+            color: rebeccapurple;
+            font-weight: bold;
+            width: 200px;
+            padding: 10px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            text-align: center;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <script>
+
+        const DOM = {
+            none:(e)=>{
+                e.style.display = "none"
+            },
+            block:(e)=>{
+                e.style.display = "block"
+            },
+            flex:(e)=>{
+                e.style.display = "flex"
+            }
+        }
+
+        class Campo {
+            static ostaculos = []
+            static jugadores = []
+
+            constructor(durante,final) {
+                this.acabar = false
+                this.puntaje = 0
+                this.durante = durante
+                this.final = final
+                this.time = 0.1
+            }
+            iniciar() {
+                this.guardar()
+                setInterval(e => {
+
+                    if (!this.acabar) {
+                        this.acabar = Campo.jugadores.some(j => j.revisar(Campo.ostaculos))
+                        if (!this.acabar){
+                            Campo.ostaculos.forEach(e => e.avansar(this.time))
+                            this.puntaje += 0.05;
+                            this.time += 0.0001;
+                            this.durante(this.puntaje)
+                        }
+                        else{
+                            Campo.jugadores.forEach(j => j.parar = true)
+                            this.final(this.puntaje)
+                        }
+                    }
+                
+
+                }, 50)
+            }
+            guardar() {
+                Campo.ostaculos.forEach(o => { o.pg = { ...o.dom.object3D.position } })
+                Campo.jugadores.forEach(j => { j.pg = { ...j.dom.object3D.position } })
+            }
+            cargar() {
+                Campo.ostaculos.forEach(o => { Campo.cv(o.dom.object3D.position, o.pg) })
+                Campo.jugadores.forEach(j => { Campo.cv(j.dom.object3D.position, j.pg) })
+            }
+            reiniciar() {
+                this.cargar()
+                Campo.jugadores.forEach(j => j.parar = false)
+                this.acabar = false
+                this.puntaje = 0;
+                this.time = 0.1
+            }
+            static cv(pos, p) {
+                pos.x = p.x
+                pos.y = p.y
+                pos.z = p.z
+            }
+        }
+        class Ostaculo {
+            static distancia(v1, v2) {
+                return Math.sqrt(Math.pow(v1.x - v2.x, 2) + Math.pow(v1.z - v2.z, 2))
+            }
+            constructor(dom = {}) {
+                this.dom = dom
+                Campo.ostaculos.push(this)
+            }
+
+            avansar(t) {
+                this.dom.object3D.position.z += t
+                if (this.dom.object3D.position.z >= -1) {
+                    this.dom.object3D.position.z = -13
+                    this.dom.object3D.position.x = (Math.random() * 4.1) - 2
+                }
+            }
+
+            choque(v, d) {
+                let res = Ostaculo.distancia(v, this.dom.object3D.position) <= d
+                if (res) {
+                    this.dom.setAttribute('material', 'color', 'blue')
+                    setTimeout(e => {
+                        this.dom.setAttribute('material', 'color', '#FFC65D')
+                    }, 500)
+                }
+                return res
+            }
+        }
+        class Jugador {
+
+            constructor(dom = {}) {
+                this.dom = dom
+                this.parar = false
+                Campo.jugadores.push(this)
+                this.velocidad = 0.3
+
+
+                window.addEventListener("keyup", (event) => {
+                    if (!this.parar) {
+                        if (event.key == "a" || event.key == "ArrowLeft") {
+                            this.dom.object3D.position.x += -this.velocidad
+                        }
+                        if (event.key == "d" || event.key == "ArrowRight") {
+                            this.dom.object3D.position.x += this.velocidad
+                        }
+                        if (this.dom.object3D.position.x < -2)
+                            this.dom.object3D.position.x = -2
+                        if (this.dom.object3D.position.x > 2)
+                            this.dom.object3D.position.x = 2
+                    }
+                    
+                }, false)
+                
+                document.onclick = (e)=>{
+                    if (!this.parar) {
+                        if(e.offsetX < screen.width/2)
+                        this.dom.object3D.position.x += -this.velocidad
+                        else
+                        this.dom.object3D.position.x += this.velocidad
+                        if (this.dom.object3D.position.x < -2)
+                            this.dom.object3D.position.x = -2
+                        if (this.dom.object3D.position.x > 2)
+                            this.dom.object3D.position.x = 2
+                    }
+
+                }
+            }
+
+            revisar(ostaculos) {
+                return ostaculos.some(o => o.choque(this.dom.object3D.position, 0.8))
+            }
+        }
+
+        AFRAME.registerComponent('ost', {
+            init: function () {
+                Campo.ostaculos.push(new Ostaculo(this.el))
+            }
+        })
+    </script>
+    <div id="caja" class="caja">
+        <div class="caja__img">OSTAPlay</div>
+        <div id="putuacion" class="caja__puntuacion">0</div>
+        <div id="iniciar" class="caja__btn btn__top">Iniciar</div>
+        <div id="reiniciar" class="caja__btn">Reiniciar</div>
+    </div>
+    <div id="puntaje" class="puntaje">
+        <div class="puntaje__img">OSTAPlay</div>
+        <div id="total" class="puntaje__total">Puntaje : 0</div>
+    </div>
+    <a-scene vr-mode-ui="enabled: false;">
+        <a-cylinder ost position="1 0.75 -9" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
+        <a-cylinder ost position="2 0.75 -7" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
+        <a-cylinder ost position="-2 0.75 -13" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
+        <a-cylinder ost position="-1 0.75 -4" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
+        <a-plane position="0 0 -6" rotation="-90 0 0" width="5" height="12" color="#7BC8A4"></a-plane>
+        <a-sky color="#ECECEC"></a-sky>
+        <a-entity id="personaje" position="0 0.5 -1">
+            <a-box scale="0.6 0.6 0.6" color="#4CC3D9">
+            </a-box>
+            <a-entity camera="userHeight: 1.6" position="0 -0.5 2" id="ca">
+            </a-entity>
+        </a-entity>
+    </a-scene>
+
+    <script>
+
+
+        //Cajas
+        const caja      = document.getElementById("caja")
+        const puntaje   = document.getElementById("puntaje")
+        DOM.none(puntaje)
+        //Caja
+        const reiniciar = document.getElementById("reiniciar")
+        const iniciar   = document.getElementById("iniciar")
+        const putuacion   = document.getElementById("putuacion")
+        
+        DOM.none(reiniciar)
+        DOM.none(putuacion)
+        //Puntaje
+        const total = document.getElementById("total") 
+        //Juego
+        const personaje = document.getElementById("personaje")
+
+
+        const jugador = new Jugador(personaje)
+        
+        const campo = new Campo(
+            (puntaje)=>{
+                total.innerHTML = `Puntaje : ${ parseInt(puntaje) }` 
+            },
+            (puntajeRes)=>{
+                DOM.none(puntaje)
+                DOM.flex(caja)
+                putuacion.innerHTML = `Puntaje : ${ parseInt(puntajeRes) }` 
+            }
+        )
+
+        reiniciar.onclick = () => {
+            DOM.none(caja)
+            DOM.flex(puntaje)
+            campo.reiniciar()
+        }
+        iniciar.onclick = () => {
+            DOM.none(iniciar)
+            DOM.none(caja)
+            DOM.flex(puntaje)
+            
+            DOM.block(reiniciar)
+            DOM.block(putuacion)
+            campo.iniciar()
+        }
+
+    </script>
+</body>
+
+</html>
